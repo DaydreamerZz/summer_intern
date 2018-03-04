@@ -68,3 +68,30 @@
     show_list(head);
 ---------------------------------------------------------
 
+
+//    StackL *stack;
+//    stack = init_stackl();
+//    push_stackl(stack, 1);
+//    push_stackl(stack, 2);
+//
+//    ElemType *e = malloc(sizeof(ElemType));
+//    pop_stackl(stack, e);
+//    printf("%d\n", *e);
+//
+//    push_stackl(stack, 5);
+//    pop_stackl(stack, e);
+//    printf("%d\n", *e);
+//    push_stackl(stack, 6);
+//    stackl_print(stack);
+
+//    ArrayStack *stacka;
+//    stacka = init_array_stack();
+//    push_array_stack(stacka, 1);
+//    push_array_stack(stacka, 2);
+//    push_array_stack(stacka, 3);
+//
+//    ElemType *e = malloc(sizeof(ElemType));
+//    pop_array_stack(stacka, e);
+//    printf("%d\n", *e);
+//    array_stack_print(stacka);
+---------------------------------------------------------

@@ -12,36 +12,37 @@ typedef int ElemType;
 typedef int Status;
 
 
-typedef struct StackL{
+typedef struct LinkStack{
     ElemType *base;
     ElemType *top;
     int size;
-}StackL;
+}LinkStack;
 
 
-typedef struct StackA{
+typedef struct ArrayStack{
     ElemType base[STACK_INIT_SIZE];
     int stackSize;
     int top;
-}StackA;
+}ArrayStack;
 
+//-----------------------------------------------------------
+//也是数组的stack,但是是指针的
+LinkStack *init_link_stack();
+void free_link_stack(LinkStack *s);
 
-StackL *init_stackl();
-void free_stackl(StackL *s);
+Status push_link_stack(LinkStack *s, ElemType e);
+Status pop_link_stack(LinkStack *s, ElemType *e);
 
-Status push_stackl(StackL *s, ElemType e);
-Status pop_stackl(StackL *s, ElemType *e);
-
-void stackl_print(StackL *s);
+void link_stack_print(LinkStack *s);
 
 //------------------------------------------------------------
 //数组stack
 
-ElemType *init_stacka();
-void free_stacka();
+ArrayStack *init_array_stack();
+void free_array_stack(ArrayStack *s);
 
-Status push_stacka(StackA *s, ElemType e);
-Status pop_stacka(StackA *s, ElemType *e);
+Status push_array_stack(ArrayStack *s, ElemType e);
+Status pop_array_stack(ArrayStack *s, ElemType *e);
 
-void stacka_print(StackA *s);
+void array_stack_print(ArrayStack *s);
 #endif //INTERVIEW_STACK_H

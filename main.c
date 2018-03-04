@@ -14,37 +14,9 @@ int *merge_two_sorted_array(int array1[], int len1, int array2[], int len2, int 
 
 
 
-typedef struct sds{
-    double a;
-}SDS;
-
-
-
 int main()
 {
-//    StackL *stack;
-//    stack = init_stackl();
-//    push_stackl(stack, 1);
-//    push_stackl(stack, 2);
-//
-//    ElemType *e = malloc(sizeof(ElemType));
-//    pop_stackl(stack, e);
-//    printf("%d\n", *e);
-//
-//    push_stackl(stack, 5);
-//    pop_stackl(stack, e);
-//    printf("%d\n", *e);
-//    push_stackl(stack, 6);
-//    stackl_print(stack);
-
-    StackA *stacka;
-    stacka = init_stacka();
-    push_stacka(stacka, 1);
-    push_stacka(stacka, 2);
-    push_stacka(stacka, 3);
-
-    stacka_print(stacka);
-
+    init_link_stack();
     return 0;
 }
 

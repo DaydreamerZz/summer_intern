@@ -7,8 +7,8 @@
 #include "stack.h"
 
 
-StackL *init_stackl(){
-    StackL *s = malloc(sizeof(StackL));
+LinkStack *init_link_stack(){
+    LinkStack *s = malloc(sizeof(LinkStack));
     if(!s){
         printf("malloc error\n");
         return NULL;
@@ -18,7 +18,7 @@ StackL *init_stackl(){
     s->size = STACK_INIT_SIZE;
     return s;
 }
-void free_stackl(StackL *s)
+void free_link_stack(LinkStack *s)
 {
     if(!s){
         printf("NULL stack\n");
@@ -29,7 +29,7 @@ void free_stackl(StackL *s)
     return;
 }
 
-Status push_stackl(StackL *s, ElemType e)
+Status push_link_stack(LinkStack *s, ElemType e)
 {
     if(s == NULL){
         printf("NULL stack\n");
@@ -49,7 +49,7 @@ Status push_stackl(StackL *s, ElemType e)
     return 1;
 }
 
-Status pop_stackl(StackL *s, ElemType *e)
+Status pop_link_stack(LinkStack *s, ElemType *e)
 {
     if(!s){
         printf("NULL stack\n");
@@ -64,7 +64,7 @@ Status pop_stackl(StackL *s, ElemType *e)
     return -1;
 }
 
-void stackl_print(StackL *s)
+void link_stack_print(LinkStack *s)
 {
     if(!s){
         printf("NULL stack\n");
@@ -81,32 +81,55 @@ void stackl_print(StackL *s)
 
 
 
-ElemType *init_stacka()
+ArrayStack *init_array_stack()
 {
-    ElemType *stack = (ElemType *)malloc(sizeof(StackA));
+    ArrayStack *stack = (ElemType *)malloc(sizeof(ArrayStack));
+    stack->stackSize = STACK_INIT_SIZE;
+    stack->top = 0;
     return stack;
 }
-void free_stacka();
+void free_array_stack(ArrayStack *s)
+{
+    if(!s){
+        printf("NULL stack\n");
+        return;
+    }
+    free(s->base);
+    free(s);
+}
 
-Status push_stacka(StackA *s, ElemType e)
+Status push_array_stack(ArrayStack *s, ElemType e)
 {
     if(!s){
         printf("NULL stack\n");
         return -1;
     }
-    if(s->stackSize == STACK_INIT_SIZE){
+    if(s->top == STACK_INIT_SIZE){
         printf("stack full\n");
         return -1;
     }
-    s->base[s->stackSize++] = e;
+    s->base[s->top++] = e;
 
 }
-Status pop_stacka(StackA *s, ElemType *e);
-
-void stacka_print(StackA *s)
+Status pop_array_stack(ArrayStack *s, ElemType *e)
 {
-    int len = s->stackSize;
-    for(; len > 0; len--){
+    if(!s){
+        printf("NULL stack\n");
+        return -1;
+    }
+    if(s->top == 0){
+        printf("Empty stack\n");
+        return -1;
+    }else{
+        *e = s->base[--(s->top)];
+    }
+
+}
+
+void array_stack_print(ArrayStack *s)
+{
+    int len = s->top-1;
+    for(; len >= 0; len--){
         printf("%d\t", s->base[len]);
     }
 
