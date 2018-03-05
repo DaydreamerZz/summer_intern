@@ -5,6 +5,9 @@
 
 #include "list.h"
 #include "stack.h"
+#include "sort.h"
+
+#define MIN(a, b) ((a)<(b)?(a):(b))
 
 int str_to_int(char *str);
 bool find_in_matrix(int matrix[][4], int rows, int columns, int number);
@@ -16,7 +19,19 @@ int *merge_two_sorted_array(int array1[], int len1, int array2[], int len2, int 
 
 int main()
 {
-    init_link_stack();
+    int array[] = {1, 3, 4, 2, 9, 6, 7, 5};
+//    insert_sort(array, 8);
+
+//    shell_sort(array, 8);
+
+//    bubble_sort(array, 8);
+
+//    quick_sort(array, 0, 8);
+
+    select_sort(array, 8);
+    print_array(array, 8);
+
+
     return 0;
 }
 
