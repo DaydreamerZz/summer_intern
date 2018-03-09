@@ -1,11 +1,12 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-#include <stdlib.h>
 
 #include "list.h"
 #include "stack.h"
 #include "sort.h"
+#include "queue.h"
 
 #define MIN(a, b) ((a)<(b)?(a):(b))
 
@@ -14,24 +15,29 @@ bool find_in_matrix(int matrix[][4], int rows, int columns, int number);
 bool find_in_matrix2(int *matrix, int rows, int columns, int number);
 void replace_blank(char string[], int length);
 int *merge_two_sorted_array(int array1[], int len1, int array2[], int len2, int len);
+int min_rotate_array(int *arr, int length);
 
+long long stupid_fibonacci_recursive(int n);
+int smart_finonacci(int n);
 
+int count_one_positive(int n);
+int count_one_negative(int n);
+int count_ont_master(int n);
+
+int d_to_b(char *binary, int n);
+
+double pow(double base, int exponent);
+
+//打印从1到n位数,由于n可能很大,用字符数组表示n位数
+void print_1_to_maxofdigitals(int n);
+bool increase(char *numbers); //增加
+void print_number(char *numbers); //打印
 
 int main()
 {
-    int array[] = {1, 3, 4, 2, 9, 6, 7, 5};
-//    insert_sort(array, 8);
-
-//    shell_sort(array, 8);
-
-//    bubble_sort(array, 8);
-
-//    quick_sort(array, 0, 8);
-
-    select_sort(array, 8);
-    print_array(array, 8);
-
-
+    char arr[10];
+    sprintf(arr, "%x", 15);
+    printf("%s\n", arr);
     return 0;
 }
 
@@ -167,4 +173,185 @@ int* merge_two_sorted_array(int array1[], int len1, int array2[], int len2, int 
     }
     return array1;
 
+}
+
+int min_rotate_array(int *arr, int length)
+{
+    if(arr == NULL || length <= 0)
+        return -1;
+    int left = 0, right = length-1;
+    int mid = 0; //mid初始值为1是因为如果原本就是递增的,那么不进入while
+    while(arr[left] >= arr[right]){
+        if(right - left == 1){
+            mid = right;
+            break;
+        }
+
+        mid = (left+right)/2;
+        if(arr[mid] >= arr[left])
+            left = mid;
+        else if(arr[mid] <= arr[right])
+            right = mid;
+    }
+    printf("%d\n", arr[mid]);
+}
+
+long long stupid_fibonacci_recursive(int n)
+{
+    if(n <= 0)
+        return 0;
+    else if(n == 1)
+        return 1;
+    return stupid_fibonacci_recursive(n - 1)+ stupid_fibonacci_recursive(n - 2);
+}
+int smart_finonacci(int n)
+{
+    int i = 0, j = 1;
+    int tmp = 0;
+    if(n <= 0)
+        return i;
+    else if(n == 1)
+        return j;
+    else{
+        while(n >= 2){
+            tmp = i;
+            i = j;
+            j = j + tmp;
+            n --;
+        }
+    }
+    return j;
+}
+
+
+int count_one_positive(int n)
+{
+    int count = 0;
+    while(n){
+        if(n & 1)
+            count++;
+        n = n >> 1;
+    }
+    return count;
+}
+int count_one_negative(int n)
+{
+    int count = 0;
+    unsigned int flag = 1;
+    while(flag){
+        if(n & flag)
+            count++;
+        flag = flag << 1;
+    }
+    return count;
+}
+int count_ont_master(int n)
+{
+/*
+ * 比如12,1100,那么减一会得到1011,而1100&1011得到1000,也就是消掉了最右边的一个1.
+ */
+    int count = 0;
+    while(n){
+        count++;
+        n = (n-1)&n;
+    }
+    return count;
+}
+
+
+int d_to_b(char *binary, int n)
+{
+    int index = 0;
+    int tmp = 0;
+    while(n != 0){
+        tmp = n % 2;
+        binary[index++] = tmp+'0';
+        n = n / 2;
+    }
+    binary[index] = '\0';
+    return index;
+}
+
+double pow(double base, int exponent)
+{
+    double base_zero = 0.0;
+    if(base - base_zero < 0.000001 && base - base_zero > -0.00001){ //check if base is 0
+        return base_zero;
+    }
+
+    unsigned int absExponent = (unsigned int)exponent;
+    if(exponent == 0){
+        return 1.0;
+    }else if(exponent < 0){
+        absExponent = (unsigned int)(-exponent);
+    }
+
+    double res = 1.0;
+    int index;
+    for(index = 0; index < absExponent; index++){
+        res = res * base;
+    }
+
+    if(exponent < 0)
+        res = 1.0 / res;
+    return res;
+
+}
+
+
+bool increase(char *numbers) //增加
+{
+    int takeOver = 0; //用来表示进位
+    int length = strlen(numbers);
+    bool isOver = false;
+
+    for(int i = length-1; i >= 0; i--){
+        int currentNumber = numbers[i] - '0' + takeOver;
+        if(i == length-1){
+            currentNumber += 1;
+        }
+        if(currentNumber >= 10){
+            if(i == 0){
+                isOver = true;
+                break;
+            }else{
+
+                numbers[i] = '0';
+                takeOver = 1;
+            }
+        }else{
+            numbers[i] = '0' + currentNumber;
+            break;
+        }
+    }
+    return isOver;
+}
+void print_number(char *numbers) //打印
+{
+    bool startPrint = false;
+    int length = strlen(numbers);
+    int index;
+    for(index = 0; index < length; index++){
+        if(numbers[index] == '0')
+            continue;
+        else
+            break;
+    }
+    for(; index < length; index++){
+        printf("%c", numbers[index]);
+    }
+    printf("\n");
+
+}
+void print_1_to_maxofdigitals(int n)
+{
+    if(n <= 0)
+        return;
+    char numbers[n+1];
+    memset(numbers, '0', n);
+    numbers[n] = '\0';
+    while(!increase(numbers)){
+        print_number(numbers);
+    }
+    return;
 }

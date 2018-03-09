@@ -95,3 +95,61 @@
 //    printf("%d\n", *e);
 //    array_stack_print(stacka);
 ---------------------------------------------------------
+
+//    int array[] = {1, 3, 4, 2, 9, 6, 7, 5};
+//    insert_sort(array, 8);
+//    shell_sort(array, 8);
+//    bubble_sort(array, 8);
+//    quick_sort(array, 0, 8);
+//    select_sort(array, 8);
+//    print_array(array, 8);
+---------------------------------------------------------
+
+ArrayQueue *arrayQueue;
+    arrayQueue = init_array_queue();
+    int e = 1;
+    ElemType *ep = malloc(sizeof(ElemType));
+
+    enque(arrayQueue, 2);
+    enque(arrayQueue, 2);
+    enque(arrayQueue, 2);
+    deque(arrayQueue, ep);
+    printf("%d\n", *ep);
+    deque(arrayQueue, ep);
+    printf("%d\n", *ep);
+---------------------------------------------------------
+//    int arr[] = {3,4,5,6,7,8,9,1,2};
+    int arr[] = {1,2,3,4,5,6,7,8,9};
+    min_rotate_array(arr, 9);
+---------------------------------------------------------
+//    long long l = stupid_fibonacci_recursive(3);
+//    printf("%ld\n", l);
+//    printf("%d\n", smart_finonacci(10));
+    min_rotate_array(arr, 9);
+---------------------------------------------------------
+    printf("%d\n", count_one_positive(11));
+    printf("%d\n", count_one_negative(-11));
+    printf("%d\n", count_ont_master(-11));
+
+---------------------------------------------------------
+    double res = 0.0;
+    res = pow(2.0, -2);
+    printf("%lf\n", res);
+
+---------------------------------------------------------
+
+
+---------------------------------------------------------
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+
+---------------------------------------------------------
