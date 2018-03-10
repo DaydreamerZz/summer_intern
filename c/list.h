@@ -12,11 +12,17 @@ typedef struct node{
 
 node *add_to_tail(node *head, int value);
 
-void show_list(node *head);
+void print_list(node *head);
 
 void remove_node(node *head, int value);
 
 void print_list_reversingly(node *head);
 void print_list_reversingly_recursively(node *head);
 
+node *find_kth_to_tail(node *head, int k);
+
+node *reverse_list(node *head);
+node *reverse_list_recursively(node *head);
+
+node *merge_list(node *first, node *second);
 #endif //INTERVIEW_LIST_H

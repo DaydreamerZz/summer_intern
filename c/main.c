@@ -2,11 +2,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <assert.h>
 
 #include "list.h"
 #include "stack.h"
 #include "sort.h"
 #include "queue.h"
+
 
 #define MIN(a, b) ((a)<(b)?(a):(b))
 
@@ -26,18 +28,18 @@ int count_ont_master(int n);
 
 int d_to_b(char *binary, int n);
 
-double pow(double base, int exponent);
+double pow_test(double base, int exponent);
 
 //打印从1到n位数,由于n可能很大,用字符数组表示n位数
 void print_1_to_maxofdigitals(int n);
 bool increase(char *numbers); //增加
 void print_number(char *numbers); //打印
 
+void reorder_odd_even(int *array, int length);
+void reorder_smart(int *array, int length);
+
 int main()
 {
-    char arr[10];
-    sprintf(arr, "%x", 15);
-    printf("%s\n", arr);
     return 0;
 }
 
@@ -272,7 +274,7 @@ int d_to_b(char *binary, int n)
     return index;
 }
 
-double pow(double base, int exponent)
+double pow_test(double base, int exponent)
 {
     double base_zero = 0.0;
     if(base - base_zero < 0.000001 && base - base_zero > -0.00001){ //check if base is 0
@@ -352,6 +354,57 @@ void print_1_to_maxofdigitals(int n)
     numbers[n] = '\0';
     while(!increase(numbers)){
         print_number(numbers);
+    }
+    return;
+}
+
+
+void reorder_odd_even(int *array, int length)
+{
+
+    if(array == NULL || length <= 0)
+        return;
+    int left = 0, right = length-1;
+    while(left < right){
+        while(array[left] % 2  == 1){ //(array[left] & 0x1) != 0
+            left++;
+        }
+        while(array[right] % 2 == 0){
+            right--;
+        }
+        if(left < right){
+            int tmp = array[left];
+            array[left] = array[right];
+            array[right] = tmp;
+        }
+    }
+    return;
+
+}
+int func(int value)
+{
+    if(value % 3 == 0)
+        return 1;
+    else
+        return 0;
+}
+void reorder_smart(int *array, int length)
+{
+    if(array == NULL || length <= 0)
+        return;
+    int left = 0, right = length-1;
+    while(left < right){
+        while(func(array[left])){
+            left++;
+        }
+        while(!func(array[right])){
+            right--;
+        }
+        if(left < right){
+            int tmp = array[left];
+            array[left] = array[right];
+            array[right] = tmp;
+        }
     }
     return;
 }

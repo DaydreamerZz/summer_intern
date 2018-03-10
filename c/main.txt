@@ -137,10 +137,51 @@ ArrayQueue *arrayQueue;
     printf("%lf\n", res);
 
 ---------------------------------------------------------
+    int array[] = {
+            1,2,3,3,1,1,3,3,3,1,10,30,1
+    };
+    reorder_odd_even(array, sizeof(array)/ sizeof(int));
+    print_array(array, sizeof(array)/ sizeof(int));
 
+    reorder_smart(array, sizeof(array)/ sizeof(int));
+    print_array(array, sizeof(array)/ sizeof(int));
 
 ---------------------------------------------------------
+    node *node1 = malloc(sizeof(node));
+    node *node2 = malloc(sizeof(node));
+    node *node3 = malloc(sizeof(node));
+    node *node4 = malloc(sizeof(node));
+    node *node5 = malloc(sizeof(node));
+    node *node6 = malloc(sizeof(node));
+    node1->value = 1; node1->next = node2;
+    node2->value = 6; node2->next = node3;
+    node3->value = 8; node3->next = node4;
+    node4->value = 12; node4->next = node5;
+    node5->value = 20; node5->next = node6;
+    node6->value = 30; node6->next = NULL;
+    print_list(node1);
 
+    node *node11 = malloc(sizeof(node));
+    node *node22 = malloc(sizeof(node));
+    node *node33 = malloc(sizeof(node));
+    node *node44 = malloc(sizeof(node));
+    node *node55 = malloc(sizeof(node));
+    node *node66 = malloc(sizeof(node));
+    node11->value = 2; node11->next = node22;
+    node22->value = 3; node22->next = node33;
+    node33->value = 7; node33->next = node44;
+    node44->value = 9; node44->next = node55;
+    node55->value = 12; node55->next = node66;
+    node66->value = 40; node66->next = NULL;
+    print_list(node11);
+
+    node *tmp = merge_list(NULL, NULL);
+    print_list(tmp);
+
+//    node *tmp = find_kth_to_tail(node1, 1);
+//    node *tmp = reverse_list(node1);
+//    print_list(tmp);
+//    printf("%d\n", tmp->value);
 
 ---------------------------------------------------------
 

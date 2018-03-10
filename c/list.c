@@ -8,10 +8,12 @@
 /*
  * 打印完整链表
  */
-void show_list(node *head)
+void print_list(node *head)
 {
-    if(head == NULL)
+    if(head == NULL){
+        printf("Null list\n");
         return;
+    }
     while(head != NULL){
         printf("%d\t", head->value);
         head = head->next;
@@ -85,7 +87,8 @@ void print_list_reversingly(node *head)
 }
 
 
-void print_list_reversingly_recursively(node *head){
+void print_list_reversingly_recursively(node *head)
+{
     if(head != NULL){
         if(head->next != NULL){
             print_list_reversingly_recursively(head->next);
@@ -93,4 +96,87 @@ void print_list_reversingly_recursively(node *head){
         printf("%d\t", head->value);
     }
 
+}
+
+node *find_kth_to_tail(node *head, int k)
+{
+    if(head == NULL){
+        printf("Null list\n");
+        return NULL;
+    }else if(k <= 0){
+        printf("k must big than 1\n");
+        return NULL;
+    }
+    node *first = head;
+    node *second = head;
+    int index = 0;
+    while(first != NULL){
+        first = first->next;
+        index++;
+        if(index == k)
+            break;
+    }
+    if(index < k){
+        printf("Not enough node in this list\n");
+        return NULL;
+    }else{
+        while(first != NULL){
+            first = first->next;
+            second = second->next;
+        }
+    }
+    return second;
+
+}
+
+node *reverse_list(node *head)
+{
+    if(head == NULL){
+        printf("Null list\n");
+        return NULL;
+    }
+    node *currentNode = head->next;
+    head->next = NULL;
+    node *pNext = NULL;
+    while(currentNode != NULL){
+        pNext = currentNode;
+        currentNode = currentNode->next;
+        pNext->next = head;
+        head = pNext;
+    }
+    return head;
+}
+
+node *reverse_list_recursively(node *head)
+{
+    return NULL;
+}
+
+node *merge_list(node *first, node *second)
+{
+    if(first == NULL && second == NULL)
+        return NULL;
+    else if(first == NULL && second != NULL){
+        return second;
+    }else if(first != NULL && second == NULL){
+        return first;
+    }
+    node *head = malloc(sizeof(node));
+    node *currentHead = head;
+    while(first != NULL && second != NULL){
+        if(first->value <= second->value){
+            currentHead->next = first;
+            currentHead = currentHead->next;
+            first = first->next;
+        }else{
+            currentHead->next = second;
+            currentHead = currentHead->next;
+            second = second->next;
+        }
+    }
+    if(first == NULL && second != NULL)
+        currentHead->next = second;
+    if(second == NULL && first != NULL)
+        currentHead->next = first;
+    return head->next;
 }
