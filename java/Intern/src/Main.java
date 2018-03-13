@@ -1,63 +1,48 @@
-import designpattern.factory.*;
-import designpattern.observer.Subject;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
+import java.util.ArrayList;
 
 import static java.lang.System.out;
 
-public class Main extends Thread{
-    static int age;
-    String name;
-    public static void print(){
-        out.print(age);
+public class Main{
+
+    public class Member{
+        int id;
+        String name;
+        public Member(String name){
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Inner{" +
+                    "name=" + name +
+                    '}';
+        }
+
+        public void leave() {
+            members.remove(this);
+        }
     }
-    enum week{
-        monday,
-        tuesday,
-        wednesday,
-        thursday,
-        friday,
-        saturday,
-        sunday
-    }
-    public static void setPerson(Person p){
-//        p.age = 100;
-        p = new Person();
-        p.age = 7;
+
+    private static ArrayList<Member> members;
+
+    public Member enroll(String name){
+        Member newMember = new Member(name);
+        members.add(newMember);
+        return newMember;
     }
     public static void main(String[] args) {
-//        System.out.println("Hello World!");
-//        String s1 = "Programming";
-//        String s2 = new String("Programming");
-//        String s3 = "Program" + "ming";
-//        System.out.println(s1 == s2);
-//        System.out.println(s1 == s3);
-//        System.out.println(s1 == s1.intern());
-//        String a = "ja";
-//        String b = "va";
-//        String c = "java";
-//        String d = "ja" + "va";
-//        out.println(c == a+b); //false
-//        out.println(c == d);
-        String a = "java";
-        out.println("ja"+"va" == a);
-
-
+        Main main = new Main();
+        main.test(main);
+    }
+    public void test(Main main){
+        members = new ArrayList<>();
+//        main.test();
+        Main.Member fred = main.enroll("fred");
+        Main.Member tom = main.enroll("tom");
+        for(Main.Member member : members)
+            out.println(member);
+        fred.leave();
+        for(Main.Member member : members)
+            out.println(member);
     }
 }
-class Person{
-    int age;
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "age=" + age +
-                '}';
-    }
-}
-
-//class designpattern.factory.Singleton{
-//    private static
-//}
