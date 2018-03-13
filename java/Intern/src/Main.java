@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.lang.System.out;
 
@@ -17,32 +18,20 @@ public class Main{
                     "name=" + name +
                     '}';
         }
-
-        public void leave() {
-            members.remove(this);
-        }
     }
 
-    private static ArrayList<Member> members;
-
-    public Member enroll(String name){
-        Member newMember = new Member(name);
-        members.add(newMember);
-        return newMember;
-    }
     public static void main(String[] args) {
-        Main main = new Main();
-        main.test(main);
+        Integer[] x = new Integer[3];
+        x[0] = 1;
+        x[1] = 2;
+        x[2] = 3;
+        Integer[] y = new Integer[3];
+        y[0] = 1;
+        y[1] = 2;
+        y[2] = 3;
+        out.println(Arrays.equals(x, y));
+
+
     }
-    public void test(Main main){
-        members = new ArrayList<>();
-//        main.test();
-        Main.Member fred = main.enroll("fred");
-        Main.Member tom = main.enroll("tom");
-        for(Main.Member member : members)
-            out.println(member);
-        fred.leave();
-        for(Main.Member member : members)
-            out.println(member);
-    }
+
 }
