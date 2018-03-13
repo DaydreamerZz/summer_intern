@@ -1,9 +1,7 @@
 import designpattern.factory.*;
 import designpattern.observer.Subject;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
+import java.util.*;
 
 import static java.lang.System.out;
 
@@ -28,22 +26,21 @@ public class Main extends Thread{
         p.age = 7;
     }
     public static void main(String[] args) {
-//        System.out.println("Hello World!");
-//        String s1 = "Programming";
-//        String s2 = new String("Programming");
-//        String s3 = "Program" + "ming";
-//        System.out.println(s1 == s2);
-//        System.out.println(s1 == s3);
-//        System.out.println(s1 == s1.intern());
-//        String a = "ja";
-//        String b = "va";
-//        String c = "java";
-//        String d = "ja" + "va";
-//        out.println(c == a+b); //false
-//        out.println(c == d);
-        String a = "java";
-        out.println("ja"+"va" == a);
-
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(0);
+        list.add(100);
+        for(Integer i : list)
+            out.print(i);
+        out.println();
+        ArrayList<Integer> newList = new ArrayList<>(list);
+        newList.add(-1);
+        for(Integer i : list)
+            out.print(i);
+        out.println();
+        for(Integer i : newList)
+            out.print(i);
+        out.println();
 
     }
 }
