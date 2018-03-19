@@ -1,4 +1,4 @@
-package netty.bio;
+package netty.faio;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -23,12 +23,14 @@ public class TimeServer {
         ServerSocket server = null;
         try{
             server = new ServerSocket(port);
-            System.out.println("Time server started in port: " + port);
+            System.out.println("FIO Time server started in port: " + port);
+            TimeServerHandlerExecutePool executePool = new TimeServerHandlerExecutePool(50, 1000);
 
             Socket socket = null;
             while (true){
                 socket = server.accept();
-                new Thread(new TimeServerHandler(socket)).start();
+                executePool.execute(new TimeServerHandler(socket));
+//                new Thread(new TimeServerHandler(socket)).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
