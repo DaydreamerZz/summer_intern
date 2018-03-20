@@ -1,4 +1,4 @@
-package algorithm.Tree;
+package algorithm.tree;
 
 /**
  * @author: Bruce Zhao

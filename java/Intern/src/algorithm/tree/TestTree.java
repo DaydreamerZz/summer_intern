@@ -1,4 +1,4 @@
-package algorithm.Tree;
+package algorithm.tree;
 
 import static java.lang.System.out;
 /**
