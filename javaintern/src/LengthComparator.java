@@ -10,6 +10,7 @@ import static java.lang.System.out;
 
 
 public class LengthComparator implements Comparator<String> {
+
     public int compare(String o1, String o2) {
         return o1.length() - o2.length();
     }
