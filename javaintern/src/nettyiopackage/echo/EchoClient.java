@@ -1,4 +1,4 @@
-package nettyiopackage;
+package nettyiopackage.echo;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;

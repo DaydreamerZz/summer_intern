@@ -1,6 +1,5 @@
-package nettyiopackage;
+package nettyiopackage.protobuf;
 
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
@@ -10,25 +9,31 @@ import io.netty.util.concurrent.EventExecutorGroup;
 /**
  * @author : Bruce Zhao
  * @email : zhzh402@163.com
- * @date : 2018/3/25 19:24
+ * @date : 2018/3/26 12:51
  * @desc :
  */
-public class EchoClientHandler extends ChannelHandlerAdapter {
-    private int counter;
-    static final String ECHO_REQ = "abcdeabcde";
-
-    public EchoClientHandler(){}
-
+public class SubReqClientHandler extends ChannelHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        for(int i = 0; i < 10; i++){
-            ctx.writeAndFlush(Unpooled.copiedBuffer(ECHO_REQ.getBytes()));
+        for(int i = 1; i <= 10; i++){
+            ctx.write(subReq(i));
         }
+        ctx.flush();
     }
+
+    private SubscribeReqProto.SubscribeReq subReq(int i) {
+        SubscribeReqProto.SubscribeReq.Builder builder = SubscribeReqProto.SubscribeReq.newBuilder();
+        builder.setSubReqID(i);
+        builder.setUserName("zhao");
+        builder.setProductName("netty");
+        builder.setAddress("SH");
+        return builder.build();
+    }
+
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        System.out.println("This is " + ++counter + "times receive server msg: " + (String)msg);
+        System.out.println("Receive server response: " + msg);
     }
 
     @Override
