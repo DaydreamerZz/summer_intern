@@ -14,10 +14,10 @@ void insert_sort(int array[], int len)
     for(i = 1; i < len; i++){
         tmp = array[i];
         if(tmp < array[i-1]){//如果后一个比前一个大,就不需要再交换了
-            for(j = i - 1; j > 0 && array[j] > tmp; j--){
-                array[j+1] = array[j];
+            for(j = i; j > 0 && array[j-1] > tmp; j--){
+                array[j] = array[j-1];
             }
-            array[j+1] = tmp;
+            array[j] = tmp;
         }
     }
 }

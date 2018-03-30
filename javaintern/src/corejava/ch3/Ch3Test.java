@@ -1,5 +1,7 @@
 package corejava.ch3;
 
+import corejava.ch4.Employee;
+
 interface Closeable{
     void close();
 }
@@ -16,5 +18,12 @@ public class Ch3Test implements Closeable, Channel{
         c.close(); //实例c无法调用open方法
         Channel cc = (Channel) t;
         cc.open();
+
+
     }
+
+
+
+
+
 }

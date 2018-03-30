@@ -21,11 +21,43 @@ public class Main{
     }
 
     public static void main(String[] args) {
-        Integer i = 127;
-        Integer j = 127;
-        out.println(i == j);
-
+        out.println(6);
+        B b = new B();
+        b.B1();
 
     }
+    int foo(){
+        int i = 10;
+        try{
+            i = --i / 0;
+            return i--;
+        }catch (Exception e){
+            i = i-- / 0;
+            return --i;
+        }finally {
+            --i;
+            return  i--;
+        }
+    }
 
+}
+
+class B extends A{
+    static{
+        out.print(5);
+    }
+    static void B1(){
+        out.print(1);
+    }
+    void B2(){
+        out.print(2);
+    }
+}
+class A{
+    static void A1(){
+        out.print(3);
+    }
+    void A2(){
+        out.print(4);
+    }
 }
