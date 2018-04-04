@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * You may obtain SuperClass copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -225,7 +225,7 @@ public class HttpFileServerHandler extends
         sb.append("当前目录:" + dirpath);
         sb.append("</h3>");
         sb.append("<table>");
-        sb.append("<tr><td colspan='3'>上一级:<a href=\"../\">..</a>  </td></tr>");
+        sb.append("<tr><td colspan='3'>上一级:<SuperClass href=\"../\">..</SuperClass>  </td></tr>");
         if (uri.equals("/")) {
             uri = "";
         } else {
@@ -250,7 +250,7 @@ public class HttpFileServerHandler extends
             } else {
                 fnameShow = "<font color='red'>" + fileName + "</font>";
             }
-            sb.append("<td style='width:600px'> " + lastModified + "</td><td style='width:100px'>" + Files.size(f.toPath()) + "</td><td><a href=\"" + uri + fileName + "\">" + fnameShow + "</a></td>");
+            sb.append("<td style='width:600px'> " + lastModified + "</td><td style='width:100px'>" + Files.size(f.toPath()) + "</td><td><SuperClass href=\"" + uri + fileName + "\">" + fnameShow + "</SuperClass></td>");
             sb.append("</tr>");
 
         }
@@ -284,7 +284,7 @@ public class HttpFileServerHandler extends
         buf.append(dirPath).append(" 目录：");
         buf.append("</h3>\r\n");
         buf.append("<ul>");
-        buf.append("<li>链接：<a href=\"../\">..</a></li>\r\n");
+        buf.append("<li>链接：<SuperClass href=\"../\">..</SuperClass></li>\r\n");
         for (File f : dir.listFiles()) {
             if (f.isHidden() || !f.canRead()) {
                 continue;
@@ -293,11 +293,11 @@ public class HttpFileServerHandler extends
             if (!ALLOWED_FILE_NAME.matcher(name).matches()) {
                 continue;
             }
-            buf.append("<li>链接：<a href=\"");
+            buf.append("<li>链接：<SuperClass href=\"");
             buf.append(name);
             buf.append("\">");
             buf.append(name);
-            buf.append("</a></li>\r\n");
+            buf.append("</SuperClass></li>\r\n");
         }
         buf.append("</ul></body></html>\r\n");
         ByteBuf buffer = Unpooled.copiedBuffer(buf, CharsetUtil.UTF_8);
