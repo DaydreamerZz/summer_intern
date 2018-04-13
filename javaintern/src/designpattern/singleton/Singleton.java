@@ -1,4 +1,4 @@
-package designpattern;
+package designpattern.singleton;
 
 /*class SingletonObject {
     private static class SingletonHolder{

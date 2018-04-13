@@ -21,9 +21,15 @@ public class Main{
     }
 
     public static void main(String[] args) {
-        out.println(6);
+
+        int a = 0x1a;
+        System.out.println(Integer.valueOf(a));
+        System.out.println(Integer.toString(a));
+        return;
+
+        /*out.println(6);
         B b = new B();
-        b.B1();
+        b.B1();*/
 
     }
     int foo(){
