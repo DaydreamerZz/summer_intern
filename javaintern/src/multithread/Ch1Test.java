@@ -16,7 +16,7 @@ public class Ch1Test {
         thread2.start();*/
 
 
-        DeadLock deadLock = new DeadLock();
+        /*DeadLock deadLock = new DeadLock();
         deadLock.setStr("A");
         Thread thread1 = new Thread(deadLock);
         thread1.start();
@@ -28,7 +28,14 @@ public class Ch1Test {
 
         deadLock.setStr("B");
         Thread thread2 = new Thread(deadLock);
-        thread2.start();
+        thread2.start();*/
+
+
+        MyThread myThread = new MyThread();
+        myThread.start();
+        myThread.interrupt();
+        myThread.test();
+        myThread.test();
 
         return;
     }
@@ -82,3 +89,15 @@ class MyThread2 extends Thread{
     }
 }
 */
+
+class MyThread extends Thread{
+    @Override
+    public void run() {
+        while (true){
+
+        }
+    }
+    public void test(){
+        System.out.println(this.isInterrupted());
+    }
+}
