@@ -26,8 +26,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 
 import java.net.InetSocketAddress;
@@ -37,9 +35,9 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * @author Lilinfeng
- * @version 1.0
- * @date 2014年3月15日
+ * author Lilinfeng
+ * version 1.0
+ * date 2014年3月15日
  */
 public class NettyClient {
 

@@ -2,13 +2,14 @@ package Ch4StickPackage;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 /**
- * @author: Bruce Zhao
- * @email: zhzh402@163.com
- * @date: 2018/3/21 20:19
+ * author: Bruce Zhao
+ * email: zhzh402@163.com
+ * date: 2018/3/21 20:19
  */
 public class NettyTimeServerHandler extends ChannelInboundHandlerAdapter {
 
@@ -33,6 +34,9 @@ public class NettyTimeServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception{
         ctx.flush();
+
+//        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER)
+//                .addListener(ChannelFutureListener.CLOSE);
     }
 
     @Override

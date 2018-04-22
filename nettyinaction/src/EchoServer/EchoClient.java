@@ -1,4 +1,4 @@
-package EchoServerCh2;
+package EchoServer;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
