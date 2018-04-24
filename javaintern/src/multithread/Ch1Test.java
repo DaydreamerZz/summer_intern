@@ -31,21 +31,42 @@ public class Ch1Test {
         thread2.start();*/
 
 
-        MyThread myThread = new MyThread();
+        /*MyThread myThread = new MyThread();
         myThread.start();
         myThread.interrupt();
         myThread.test();
-        myThread.test();
+        myThread.test();*/
+
+        /*Ch1Test ch1Test = new Ch1Test();
+        ch1Test.f1();*/
+
+
+        SynchronizedObject object1 = new SynchronizedObject();
+        SynchronizedObject object2 = new SynchronizedObject();
+        MyThread1 myThread1 = new MyThread1(object1);
+        MyThread2 myThread2 = new MyThread2(object2);
+        myThread1.start();
+        myThread2.start();
 
         return;
     }
 
+    synchronized void f1(){
+        f2();
+        return;
+    }
+
+    synchronized void f2(){
+        System.out.println("in f2");
+        return;
+    }
 }
 
 class SynchronizedObject{
-    private int num = 5;
-    public void addI(String username) {
-        synchronized (this) {
+    private static int num = 5;
+
+    static synchronized public void addI(String username) {
+//        synchronized (this) {
             try {
                 if (username.equals("a")) {
                     num = 100;
@@ -59,11 +80,33 @@ class SynchronizedObject{
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+//        }
 
     }
 }
 
+
+class MyThread1 extends Thread{
+    private SynchronizedObject object;
+    public MyThread1(SynchronizedObject object){
+        this.object = object;
+    }
+    @Override
+    public void run() {
+        object.addI("a");
+    }
+}
+
+class MyThread2 extends Thread{
+    private SynchronizedObject object;
+    public MyThread2(SynchronizedObject object){
+        this.object = object;
+    }
+    @Override
+    public void run() {
+        object.addI("b");
+    }
+}
 /*
 class MyThread1 extends Thread{
 

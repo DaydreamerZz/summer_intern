@@ -3,6 +3,7 @@ package NettyUtilities;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelPipeline;
+import io.netty.util.concurrent.AbstractFuture;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,9 @@ public class PipelineAndHandler {
 
 //        ChannelPipeline;
 //        ChannelHandlerAdapter;
+
+
+//        AbstractFuture
         return;
     }
 }
