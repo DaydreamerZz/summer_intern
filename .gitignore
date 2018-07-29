@@ -1,4 +1,6 @@
 c/cmake-build-debug
 c/cmake-build-debug/*
 c/.idea
-javaintern/.idea
+*.o
+*/.idea
+*.class

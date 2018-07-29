@@ -1,6 +1,5 @@
 package ChatRoomWebSocket;
 
-import ChatRoom.ChatRoomServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -14,12 +13,12 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * @date : 2018/4/24 20:12
  * @desc :
  */
-public class ChatRoomServer {
+public class WebSocketChatRoom {
 
     public static void main(String[] args) throws InterruptedException {
 
         int port = 8080;
-        new ChatRoomServer().run(port);
+        new WebSocketChatRoom().run(port);
         return;
     }
 
@@ -32,7 +31,7 @@ public class ChatRoomServer {
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 100)
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
-                    .childHandler(new ChatRoomServerInitializer());
+                    .childHandler(new WebSocketServerInitializer());
 
             System.out.println("Server started");
 
